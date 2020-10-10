@@ -11,7 +11,6 @@ export const Container = styled.View`
   flex: 1;
 
   align-items: center;
-  justify-content: center;
 `
 
 export const Header = styled.View`
@@ -45,16 +44,6 @@ export const Slider = styled.View`
   height: ${(0.78 * DIMENSIONS.height) + 'px'};
 `
 
-export const Swiper = styled.ScrollView.attrs({
-  horizontal: true,
-  snapToInterval: DIMENSIONS.width,
-  decelerationRate: 'fast',
-  bounces: false,
-  showsHorizontalScrollIndicator: false,
-})`
-  flex: 1;
-`
-
-export const Footer = styled.View`
-  flex: 1;
+export const Pagination = styled.View`
+  
 `
