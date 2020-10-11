@@ -19,6 +19,7 @@
   ],
   "rules": {
     "no-unused-vars": "off",
+    "space-before-function-paren": ["error", "never"],
     "react/jsx-filename-extension": [
       "error",
       {
