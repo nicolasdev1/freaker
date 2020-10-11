@@ -4,7 +4,8 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/server.js --watch src"
+    "start": "nodemon src/server.js --watch src",
+    "lint": "eslint --ignore-path .gitignore ."
   },
   "devDependencies": {
     "eslint": "^7.11.0",
