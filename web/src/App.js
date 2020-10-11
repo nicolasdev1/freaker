@@ -2,24 +2,32 @@ import React, { useEffect, useState } from 'react'
 
 import api from './services/api'
 
+import Button from './components/Button'
+
 const App = () => {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-    api.get('products').then(({ data }) => {
-      setProducts(data)
-    })
+    function handleProducts() {
+      api.get('products').then(({ data }) => {
+        setProducts(data)
+      })
+    }
+
+    setTimeout(handleProducts, 1000)
   }, [products])
+
+  if (!products.length) return <h1>Carregando dados...</h1>
 
   return (
     <>
       {products.map(product => (
-        <div key={product.id}>
-          {product.images.map((image, index) => (
-            <img key={index} src={image} alt="" width={512} />
-          ))}
-        </div>
+        <h1>{product.name}</h1>
       ))}
+
+      <Button
+        title="Próximo"
+      />
     </>
   )
 }
