@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 import api from './services/api'
 
+import GlobalStyles from './styles/GlobalStyles'
+
 import Button from './components/Button'
+import Header from './components/Header'
 
 const App = () => {
   const [products, setProducts] = useState([])
@@ -21,6 +24,7 @@ const App = () => {
 
   return (
     <>
+    <Header />
       {products.map(product => (
         <h1>{product.name}</h1>
       ))}
@@ -28,6 +32,7 @@ const App = () => {
       <Button
         title="Próximo"
       />
+      <GlobalStyles />
     </>
   )
 }
