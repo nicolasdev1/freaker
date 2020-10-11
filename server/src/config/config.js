@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 
 module.exports = {
   dialect: 'mysql',
@@ -10,6 +10,6 @@ module.exports = {
   define: {
     timestamps: true,
     underscored: true,
-    underscoredAll: true,
-  },
-};
+    underscoredAll: true
+  }
+}

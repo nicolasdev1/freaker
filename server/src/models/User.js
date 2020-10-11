@@ -1,19 +1,23 @@
-import { Model, DataTypes } from 'sequelize';
+import { Model, DataTypes } from 'sequelize'
 
 class User extends Model {
-  static init(sequelize) {
+  static init (sequelize) {
     super.init(
       {
-        name: DataTypes.STRING(100),
-        adress: DataTypes.STRING(200),
-        telephone: DataTypes.STRING(15),
-        email: DataTypes.STRING(50),
+        name: DataTypes.STRING,
+        email: DataTypes.STRING,
+        street: DataTypes.STRING,
+        number: DataTypes.STRING,
+        neighborhood: DataTypes.STRING,
+        city: DataTypes.STRING,
+        uf: DataTypes.STRING,
+        telephone: DataTypes.STRING
       },
       {
-        sequelize,
+        sequelize
       }
-    );
+    )
   }
 }
 
-export default User;
+export default User

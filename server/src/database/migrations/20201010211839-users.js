@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -7,48 +7,52 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
-        autoIncrement: true,
+        autoIncrement: true
       },
       name: {
-        allowNull: false,
-        type: Sequelize.STRING(100),
-        validate: {
-          len: [3, 100],
-        },
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      adress: {
-        allowNull: false,
-        type: Sequelize.STRING(200),
-        validate: {
-          len: [3, 200],
-        },
+      street: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      number: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      neighborhood: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      city: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      uf: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       telephone: {
-        allowNull: false,
-        type: Sequelize.STRING(15),
-        validate: {
-          len: [1, 15],
-        },
+        type: Sequelize.STRING,
+        allowNull: false
       },
       email: {
-        allowNull: false,
-        type: Sequelize.STRING(50),
-        validate: {
-          len: [5, 50],
-        },
+        type: Sequelize.STRING,
+        allowNull: false
       },
       created_at: {
         type: Sequelize.DATE,
-        allowNull: false,
+        allowNull: false
       },
       updated_at: {
         type: Sequelize.DATE,
-        allowNull: false,
-      },
-    });
+        allowNull: false
+      }
+    })
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable('users');
-  },
-};
+    await queryInterface.dropTable('users')
+  }
+}
