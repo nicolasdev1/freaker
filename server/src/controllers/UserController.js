@@ -1,7 +1,7 @@
 import User from '../models/User'
 
 class UserController {
-  async index (_, response) {
+  async index(_, response) {
     try {
       const users = await User.findAll({
         attributes: [
@@ -23,7 +23,7 @@ class UserController {
     }
   }
 
-  async store (request, response) {
+  async store(request, response) {
     const {
       name,
       email,
@@ -53,7 +53,7 @@ class UserController {
     }
   }
 
-  async update (request, response) {
+  async update(request, response) {
     const { id } = request.params
 
     const {
@@ -91,7 +91,7 @@ class UserController {
     }
   }
 
-  async show (request, response) {
+  async show(request, response) {
     const { id } = request.params
 
     try {
@@ -119,7 +119,7 @@ class UserController {
     }
   }
 
-  async delete (request, response) {
+  async delete(request, response) {
     const { id } = request.params
 
     try {
