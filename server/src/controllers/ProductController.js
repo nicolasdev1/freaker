@@ -2,18 +2,22 @@ import Product from '../models/Product'
 
 class ProductController {
   async index (_, response) {
-    const products = await Product.findAll({
-      attributes: [
-        'id',
-        'name',
-        'images',
-        'cost_price',
-        'sale_price',
-        'stock'
-      ]
-    })
+    try {
+      const products = await Product.findAll({
+        attributes: [
+          'id',
+          'name',
+          'images',
+          'cost_price',
+          'sale_price',
+          'stock'
+        ]
+      })
 
-    return response.json(products)
+      return response.json(products)
+    } catch (error) {
+      return response.status(400).json(error)
+    }
   }
 
   async store (request, response) {
@@ -76,7 +80,16 @@ class ProductController {
     const { id } = request.params
 
     try {
-      const product = await Product.findByPk(id)
+      const product = await Product.findByPk(id, {
+        attributes: [
+          'id',
+          'name',
+          'images',
+          'cost_price',
+          'sale_price',
+          'stock'
+        ]
+      })
 
       if (!product) {
         return response.status(400).json({ error: 'O produto não existe.' })

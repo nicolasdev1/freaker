@@ -2,21 +2,25 @@ import User from '../models/User'
 
 class UserController {
   async index (_, response) {
-    const users = await User.findAll({
-      attributes: [
-        'id',
-        'name',
-        'email',
-        'street',
-        'number',
-        'neighborhood',
-        'city',
-        'uf',
-        'telephone'
-      ]
-    })
+    try {
+      const users = await User.findAll({
+        attributes: [
+          'id',
+          'name',
+          'email',
+          'street',
+          'number',
+          'neighborhood',
+          'city',
+          'uf',
+          'telephone'
+        ]
+      })
 
-    return response.json(users)
+      return response.json(users)
+    } catch (error) {
+      return response.status(400).json(error)
+    }
   }
 
   async store (request, response) {
@@ -91,7 +95,19 @@ class UserController {
     const { id } = request.params
 
     try {
-      const user = await User.findByPk(id)
+      const user = await User.findByPk(id, {
+        attributes: [
+          'id',
+          'name',
+          'email',
+          'street',
+          'number',
+          'neighborhood',
+          'city',
+          'uf',
+          'telephone'
+        ]
+      })
 
       if (!user) {
         return response.status(400).json({ error: 'O usuário não existe.' })
