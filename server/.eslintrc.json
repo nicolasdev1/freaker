@@ -13,6 +13,7 @@
   },
   "rules": {
     "no-new": "off",
+    "properties": "never",
     "no-prototype-builtins": "off",
     "no-restricted-syntax": "off",
     "max-classes-per-file": "off",
