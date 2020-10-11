@@ -115,7 +115,7 @@ class UserController {
 
       await user.destroy({ where: { id } })
 
-      return response.status(200).json({ message: 'Usuário deletado com sucesso.' })
+      return response.status(200).json({ message: 'Usuário removido com sucesso.' })
     } catch (error) {
       return response.status(400).json(error)
     }
