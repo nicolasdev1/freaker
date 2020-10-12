@@ -24,7 +24,7 @@ const App = () => {
 
   return (
     <>
-    <Header />
+      <Header />
       {products.map(product => (
         <h1>{product.name}</h1>
       ))}
