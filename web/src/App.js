@@ -16,8 +16,6 @@ const App = () => {
         setProducts(data)
       })
     }
-
-    setTimeout(handleProducts, 1000)
   }, [products])
 
   if (!products.length) return <h1>Carregando dados...</h1>
