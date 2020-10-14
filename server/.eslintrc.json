@@ -13,8 +13,13 @@
   },
   "rules": {
     "no-new": "off",
-    "properties": "never",
-    "space-before-function-paren": ["error", "never"],
+    "properties": "off",
+    "camelcase": "off",
+    "space-before-function-paren": ["error", {
+      "anonymous": "always",
+      "named": "never",
+      "asyncArrow": "never"
+    }],
     "no-prototype-builtins": "off",
     "no-restricted-syntax": "off",
     "max-classes-per-file": "off",

@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize'
 
 class Product extends Model {
-  static init (sequelize) {
+  static init(sequelize) {
     super.init(
       {
         name: DataTypes.STRING,

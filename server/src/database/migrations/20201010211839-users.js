@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  up: async(queryInterface, Sequelize) => {
     await queryInterface.createTable('users', {
       id: {
         type: Sequelize.INTEGER,
@@ -52,7 +52,7 @@ module.exports = {
     })
   },
 
-  down: async (queryInterface) => {
+  down: async(queryInterface) => {
     await queryInterface.dropTable('users')
   }
 }
