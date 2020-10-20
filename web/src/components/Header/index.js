@@ -6,7 +6,7 @@ import {
   ContentLeft,
   ContentCenter,
   ContentRight,
-  IconAddCircle,
+  IconMoon,
   IconShopping,
   WrapperBar,
   Main,
@@ -16,18 +16,21 @@ const Header = () => {
   return (
     <Container>
       <Wrapper>
+
         <ContentLeft>
-          <IconAddCircle />
+          <IconMoon />
         </ContentLeft>
+
         <ContentCenter>
           <h1>Freaker</h1>
           <img src="/images/icons/freaker.svg" alt="Freaker" />
         </ContentCenter>
+
         <ContentRight>
           <IconShopping />
         </ContentRight>
-      </Wrapper>
 
+      </Wrapper>
       <TopBar />
     </Container>
   );
@@ -36,10 +39,10 @@ const Header = () => {
 const TopBar = () => (
   <WrapperBar>
     <Main>
-      <span>OFERTAS</span>
-      <span>LANÇAMENTOS</span>
-      <span>MASCULINO</span>
-      <span>FEMININO</span>
+      <span>INICIO</span>
+      <span>PEDIDOS</span>
+      <span>PRODUTOS</span>
+      <span>CLIENTES</span>
     </Main>
   </WrapperBar>
 );
