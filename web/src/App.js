@@ -1,40 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react';
 
-import api from './services/api'
+import GlobalStyles from './styles/GlobalStyles';
 
-import GlobalStyles from './styles/GlobalStyles'
-
-import Button from './components/Button'
-import Header from './components/Header'
+import Routes from './routes'
 
 const App = () => {
-  const [products, setProducts] = useState([])
-
-  useEffect(() => {
-    function handleProducts() {
-      api.get('products').then(({ data }) => {
-        setProducts(data)
-      })
-    }
-
-    setTimeout(handleProducts, 1000)
-  }, [products])
-
-  if (!products.length) return <h1>Carregando dados...</h1>
-
   return (
     <>
-      <Header />
-      {products.map(product => (
-        <h1>{product.name}</h1>
-      ))}
+      <Routes />
 
-      <Button
-        title="Próximo"
-      />
       <GlobalStyles />
     </>
   )
 }
-
-export default App
+export default App;

@@ -1,32 +1,50 @@
-import React from 'react'
+import React from 'react';
 
 import {
   Container,
   Wrapper,
   ContentLeft,
   ContentCenter,
-  ContentRight
-} from './styles'
+  ContentRight,
+  IconMoon,
+  IconShopping,
+  WrapperBar,
+  Main,
+} from './styles';
 
 const Header = () => {
   return (
     <Container>
       <Wrapper>
+
         <ContentLeft>
-
+          <IconMoon />
         </ContentLeft>
+
         <ContentCenter>
-          <img
-            src="/images/icons/freaker.svg"
-            alt="Freaker"
-          />
+          <h1>Freaker</h1>
+          <img src="/images/icons/freaker.svg" alt="Freaker" />
         </ContentCenter>
+
         <ContentRight>
-
+          <IconShopping />
         </ContentRight>
-      </Wrapper>
-    </Container>
-  )
-}
 
-export default Header
+      </Wrapper>
+      <TopBar />
+    </Container>
+  );
+};
+
+const TopBar = () => (
+  <WrapperBar>
+    <Main>
+      <span>INICIO</span>
+      <span>PEDIDOS</span>
+      <span>PRODUTOS</span>
+      <span>CLIENTES</span>
+    </Main>
+  </WrapperBar>
+);
+
+export default Header;
