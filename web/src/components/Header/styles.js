@@ -16,7 +16,6 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background: #f0f4f8; */
 
   width: 100vw;
   max-width: 1280px;
@@ -24,14 +23,14 @@ export const Wrapper = styled.div`
 
   margin: 0 auto;
   padding: 0 25px;
-
-  /* border-bottom: 3px solid #f0f4f8; */
 `;
+
 export const ContentLeft = styled.div`
   h1 {
     color: #0e0e0e;
   }
 `;
+
 export const ContentCenter = styled.div`
   display: flex;
 
@@ -45,19 +44,16 @@ export const ContentCenter = styled.div`
 `;
 
 export const ContentRight = styled.div`
-  h1 {
-    color: #0e0e0e;
-  }
 `;
 
 const iconCSS = css`
   width: 24px;
   height: 24px;
   flex-shrink: 0;
-  fill: #313131;
+  fill: #8d8d8d;
 `;
 
-export const IconAddCircle = styled(BsMoon)`
+export const IconMoon = styled(BsMoon)`
   ${iconCSS}
 `;
 
