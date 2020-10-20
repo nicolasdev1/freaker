@@ -5,8 +5,7 @@ import React from 'react';
 import GlobalStyles from './styles/GlobalStyles';
 
 // import Button from './components/Button'
-import Header from './components/Header';
-import Product from './pages/Products/Product';
+import Routes from './routes'
 
 const App = () => {
   // const [products, setProducts] = useState([])
@@ -25,8 +24,7 @@ const App = () => {
 
   return (
     <>
-      <Header />
-      <Product />
+      <Routes />
       {/* {products.map(product => (
         <h1>{product.name}</h1>
       ))}
