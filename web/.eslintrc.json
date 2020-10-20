@@ -12,6 +12,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
+  "skipBlankLines": false,
   "plugins": [
     "react",
     "jsx-a11y",
