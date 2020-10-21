@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import Animated from 'react-native-reanimated'
 
 import Slide from './Slide'
@@ -17,6 +18,7 @@ import {
   Slider,
   Pagination
 } from './styles'
+import { Button } from 'react-native'
 
 const slides = [
   {
@@ -34,6 +36,7 @@ const slides = [
 ]
 
 const Onboarding = () => {
+  const navigation = useNavigation()
   // const x = useValue(0)
   // const onScroll = onScrollEvent({ x })
   // const { scrollHandler, x } = useScrollHandler()
@@ -72,6 +75,8 @@ const Onboarding = () => {
           </Pagination>
         </Animated.View>
       </Container>
+
+      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
     </Wrapper>
   )
 }

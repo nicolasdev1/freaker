@@ -26,7 +26,7 @@ const App = () => {
       <>
         <AppStack />
       
-        <StatusBar style="auto" />
+        <StatusBar style="dark" />
       </>
     )
   }
