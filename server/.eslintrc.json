@@ -1,24 +1,32 @@
 {
   "env": {
-    "es6": true,
-    "node": true,
-    "jest": true
+    "es2021": true,
+    "node": true
   },
   "extends": [
+    "eslint:recommended",
     "standard"
   ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "plugins": [
+    "prettier"
+  ],
   "parserOptions": {
-    "ecmaVersion": 11,
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
   "rules": {
-    "no-new": "off",
-    "properties": "never",
-    "space-before-function-paren": ["error", "never"],
-    "no-prototype-builtins": "off",
-    "no-restricted-syntax": "off",
-    "max-classes-per-file": "off",
-    "no-console": "off",
-    "import/prefer-default-export": "off"
+    "camelcase": ["error", { "allow": [""] }],
+    "prettier/prettier": 0,
+    "import/default": 2,
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^[A-Z]"
+      }
+    ]
   }
 }
