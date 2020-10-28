@@ -1,7 +1,7 @@
 import Product from '../models/Product'
 
 class ProductController {
-  async index(_, response) {
+  async index (_, response) {
     try {
       const products = await Product.findAll({
         attributes: [
@@ -20,14 +20,8 @@ class ProductController {
     }
   }
 
-  async store(request, response) {
-    const {
-      name,
-      images,
-      cost_price,
-      sale_price,
-      stock
-    } = request.body
+  async store (request, response) {
+    const { name, images, cost_price, sale_price, stock } = request.body
 
     try {
       const product = await Product.create({
@@ -44,16 +38,10 @@ class ProductController {
     }
   }
 
-  async update(request, response) {
+  async update (request, response) {
     const { id } = request.params
 
-    const {
-      name,
-      images,
-      cost_price,
-      sale_price,
-      stock
-    } = request.body
+    const { name, images, cost_price, sale_price, stock } = request.body
 
     try {
       const product = await Product.findByPk(id)
@@ -76,7 +64,7 @@ class ProductController {
     }
   }
 
-  async show(request, response) {
+  async show (request, response) {
     const { id } = request.params
 
     try {
@@ -101,7 +89,7 @@ class ProductController {
     }
   }
 
-  async delete(request, response) {
+  async delete (request, response) {
     const { id } = request.params
 
     try {
@@ -113,7 +101,9 @@ class ProductController {
 
       await product.destroy({ where: { id } })
 
-      return response.status(200).json({ message: 'Produto removido com sucesso.' })
+      return response
+        .status(200)
+        .json({ message: 'Produto removido com sucesso.' })
     } catch (error) {
       return response.status(400).json(error)
     }
