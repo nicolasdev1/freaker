@@ -4,20 +4,10 @@ class UserController {
   async index (_, response) {
     try {
       const users = await User.findAll({
-        attributes: [
-          'id',
-          'name',
-          'email',
-          'street',
-          'number',
-          'neighborhood',
-          'city',
-          'uf',
-          'telephone'
-        ]
+        include: { association: 'orders' }
       })
 
-      return response.json(users)
+      return response.status(200).json(users)
     } catch (error) {
       return response.status(400).json(error)
     }
@@ -26,28 +16,18 @@ class UserController {
   async store (request, response) {
     const {
       name,
-      email,
-      street,
-      number,
-      neighborhood,
-      city,
-      uf,
-      telephone
+      address,
+      phone
     } = request.body
 
     try {
       const user = await User.create({
         name,
-        email,
-        street,
-        number,
-        neighborhood,
-        city,
-        uf,
-        telephone
+        address,
+        phone
       })
 
-      return response.json(user)
+      return response.status(201).json(user)
     } catch (error) {
       return response.status(400).json(error)
     }
@@ -58,31 +38,21 @@ class UserController {
 
     const {
       name,
-      email,
-      street,
-      number,
-      neighborhood,
-      city,
-      uf,
-      telephone
+      address,
+      phone
     } = request.body
 
     try {
       const user = await User.findByPk(id)
 
       if (!user) {
-        return response.status(400).json({ error: 'O usuário não existe.' })
+        return response.status(400).json({ error: 'The user does not exist.' })
       }
 
       await user.update({
         name,
-        email,
-        street,
-        number,
-        neighborhood,
-        city,
-        uf,
-        telephone
+        address,
+        phone
       })
 
       return response.status(200).json(user)
@@ -96,21 +66,11 @@ class UserController {
 
     try {
       const user = await User.findByPk(id, {
-        attributes: [
-          'id',
-          'name',
-          'email',
-          'street',
-          'number',
-          'neighborhood',
-          'city',
-          'uf',
-          'telephone'
-        ]
+        include: { association: 'orders' }
       })
 
       if (!user) {
-        return response.status(400).json({ error: 'O usuário não existe.' })
+        return response.status(400).json({ error: 'The user does not exist.' })
       }
 
       return response.status(200).json(user)
@@ -126,12 +86,12 @@ class UserController {
       const user = await User.findByPk(id)
 
       if (!user) {
-        return response.status(400).json({ error: 'O usuário não existe.' })
+        return response.status(400).json({ error: 'The user does not exist.' })
       }
 
       await user.destroy({ where: { id } })
 
-      return response.status(200).json({ message: 'Usuário removido com sucesso.' })
+      return response.status(204).send()
     } catch (error) {
       return response.status(400).json(error)
     }

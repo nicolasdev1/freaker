@@ -3,18 +3,9 @@ import Product from '../models/Product'
 class ProductController {
   async index (_, response) {
     try {
-      const products = await Product.findAll({
-        attributes: [
-          'id',
-          'name',
-          'images',
-          'cost_price',
-          'sale_price',
-          'stock'
-        ]
-      })
+      const products = await Product.findAll()
 
-      return response.json(products)
+      return response.status(200).json(products)
     } catch (error) {
       return response.status(400).json(error)
     }
@@ -32,7 +23,7 @@ class ProductController {
         stock
       })
 
-      return response.json(product)
+      return response.status(201).json(product)
     } catch (error) {
       return response.status(400).json(error)
     }
@@ -47,7 +38,7 @@ class ProductController {
       const product = await Product.findByPk(id)
 
       if (!product) {
-        return response.status(400).json({ error: 'O produto não existe.' })
+        return response.status(400).json({ error: 'The product does not exist.' })
       }
 
       await product.update({
@@ -68,19 +59,10 @@ class ProductController {
     const { id } = request.params
 
     try {
-      const product = await Product.findByPk(id, {
-        attributes: [
-          'id',
-          'name',
-          'images',
-          'cost_price',
-          'sale_price',
-          'stock'
-        ]
-      })
+      const product = await Product.findByPk(id)
 
       if (!product) {
-        return response.status(400).json({ error: 'O produto não existe.' })
+        return response.status(400).json({ error: 'The product does not exist.' })
       }
 
       return response.status(200).json(product)
@@ -96,14 +78,12 @@ class ProductController {
       const product = await Product.findByPk(id)
 
       if (!product) {
-        return response.status(400).json({ error: 'O produto não existe.' })
+        return response.status(400).json({ error: 'The product does not exist.' })
       }
 
       await product.destroy({ where: { id } })
 
-      return response
-        .status(200)
-        .json({ message: 'Produto removido com sucesso.' })
+      return response.status(204).send()
     } catch (error) {
       return response.status(400).json(error)
     }

@@ -11,7 +11,8 @@ class Product extends Model {
         stock: DataTypes.INTEGER
       },
       {
-        sequelize
+        sequelize,
+        tableName: 'products'
       }
     )
   }

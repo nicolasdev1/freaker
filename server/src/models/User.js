@@ -5,18 +5,18 @@ class User extends Model {
     super.init(
       {
         name: DataTypes.STRING,
-        email: DataTypes.STRING,
-        street: DataTypes.STRING,
-        number: DataTypes.STRING,
-        neighborhood: DataTypes.STRING,
-        city: DataTypes.STRING,
-        uf: DataTypes.STRING,
-        telephone: DataTypes.STRING
+        address: DataTypes.ARRAY(DataTypes.JSON),
+        phone: DataTypes.STRING
       },
       {
-        sequelize
+        sequelize,
+        tableName: 'users'
       }
     )
+  }
+
+  static associate (models) {
+    this.hasMany(models.Order, { foreignKey: 'user_id', as: 'orders' })
   }
 }
 
