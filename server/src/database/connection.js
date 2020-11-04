@@ -11,7 +11,7 @@ User.init(connection)
 Product.init(connection)
 Order.init(connection)
 
-User.associate(connection.models)
 Order.associate(connection.models)
+Product.associate(connection.models)
 
 export default connection
