@@ -4,7 +4,6 @@ class Order extends Model {
   static init (sequelize) {
     super.init(
       {
-        products: DataTypes.ARRAY(DataTypes.JSON),
         status: DataTypes.STRING
       },
       {
@@ -15,7 +14,12 @@ class Order extends Model {
   }
 
   static associate (models) {
-    this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' })
+    this.belongsTo(models.User, { foreignKey: 'user_id', as: 'users' })
+    this.belongsToMany(models.Product, {
+      through: 'order_items',
+      as: 'products',
+      foreignKey: 'order_id'
+    })
   }
 }
 
