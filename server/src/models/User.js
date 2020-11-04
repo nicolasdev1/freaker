@@ -9,14 +9,9 @@ class User extends Model {
         phone: DataTypes.STRING
       },
       {
-        sequelize,
-        tableName: 'users'
+        sequelize
       }
     )
-  }
-
-  static associate (models) {
-    this.hasMany(models.Order, { foreignKey: 'user_id', as: 'orders' })
   }
 }
 
