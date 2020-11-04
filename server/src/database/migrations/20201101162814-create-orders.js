@@ -9,49 +9,17 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true
       },
-      products: {
-        type: Sequelize.ARRAY(Sequelize.JSON({
-          id: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-          },
-          name: {
-            type: Sequelize.STRING,
-            allowNull: false
-          },
-          images: {
-            type: Sequelize.ARRAY(Sequelize.STRING),
-            allowNull: false
-          },
-          cost_price: {
-            type: Sequelize.DOUBLE,
-            allowNull: false
-          },
-          sale_price: {
-            type: Sequelize.DOUBLE,
-            allowNull: false
-          },
-          stock: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            defaultValue: 0
-          }
-        })),
-        allowNull: false
-      },
-      status: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        defaultValue: 'Pendente'
-      },
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: 'users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
+      },
+      status: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: 'Pendente'
       },
       created_at: {
         type: Sequelize.DATE,
