@@ -3,9 +3,7 @@ import User from '../models/User'
 class UserController {
   async index (_, response) {
     try {
-      const users = await User.findAll({
-        include: { association: 'orders' }
-      })
+      const users = await User.findAll()
 
       return response.status(200).json(users)
     } catch (error) {

@@ -1,11 +1,23 @@
+/* eslint-disable no-unused-vars */
 import Order from '../models/Order'
+import Product from '../models/Product'
 import User from '../models/User'
 
 class OrderController {
   async index (_, response) {
     try {
       const orders = await Order.findAll({
-        include: { association: 'user' }
+        include: [
+          {
+            model: User,
+            as: 'users'
+          },
+          {
+            model: Product,
+            as: 'products',
+            through: { atributes: [] }
+          }
+        ]
       })
 
       return response.status(200).json(orders)
@@ -15,21 +27,13 @@ class OrderController {
   }
 
   async store (request, response) {
-    const { user_id } = request.params
-
-    const { products, status } = request.body
-
     try {
-      const user = await User.findByPk(user_id)
+      const { products, ...data } = request.body
+      const order = await Order.create(data)
 
-      if (!user) {
-        return response.status(400).json({ error: 'The user does not exist.' })
+      if (products && products.length > 0) {
+        order.setProducts(products)
       }
-
-      const order = await Order.create({
-        products,
-        status
-      })
 
       return response.status(201).json(order)
     } catch (error) {
@@ -38,11 +42,11 @@ class OrderController {
   }
 
   async update (request, response) {
-    const { id } = request.params
-
-    const { products, status } = request.body
-
     try {
+      const { id } = request.params
+
+      const { products, ...data } = request.body
+
       const order = await Order.findByPk(id)
 
       if (!order) {
@@ -51,8 +55,12 @@ class OrderController {
 
       await order.update({
         products,
-        status
+        data
       })
+
+      if (products && products.length > 0) {
+        order.setProducts(products)
+      }
 
       return response.status(200).json(order)
     } catch (error) {
@@ -65,7 +73,17 @@ class OrderController {
 
     try {
       const order = await Order.findByPk(id, {
-        include: { association: ['user', 'product'] }
+        include: [
+          {
+            model: User,
+            as: 'users'
+          },
+          {
+            model: Product,
+            as: 'products',
+            through: { atributes: [] }
+          }
+        ]
       })
 
       if (!order) {
