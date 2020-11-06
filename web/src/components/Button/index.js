@@ -2,24 +2,13 @@ import React from 'react'
 
 import { Container } from './styles'
 
-const Button = ({
-  type,
-  title,
-  color,
-  width,
-  height,
-  icon,
-  onClick
-}) => {
+const Button = ({ title }) => {
   return (
-    <Container
-      color={color}
-      onClick={onClick}
-      width={width}
-      height={height}
-    >
-      <img src={icon} width={16} height={16} />
-      <button type={type}>{title}</button>
+    <Container>
+      <button>
+        <img src="" alt="" />
+        {title}
+      </button>
     </Container>
   )
 }

@@ -1,18 +1,16 @@
 import React from 'react'
 
-import Routes from './routes'
-
-import Contexts from './contexts'
-
 import GlobalStyles from './styles/GlobalStyles'
+
+import Routes from './routes'
 
 const App = () => {
   return (
-    <Contexts>
-      <GlobalStyles />
+    <>
       <Routes />
-    </Contexts>
+
+      <GlobalStyles />
+    </>
   )
 }
-
 export default App

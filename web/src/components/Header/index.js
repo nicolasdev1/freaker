@@ -1,29 +1,22 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-import Button from '../Button'
+import * as ROUTES from '../../constants/routes'
 
-import useModal from '../../hooks/useModal'
+import { Container, Logo, UserInfo, Avatar } from './styles'
 
-import { Container, Title } from './styles'
-
-const Header = ({ title }) => {
-  const { setModalVisible, setWhichModal } = useModal()
-
+const Header = () => {
   return (
     <Container>
-      <Title>{title}</Title>
+      <Link to={ROUTES.DEFAULT}>
+      <Logo src="/images/icons/freaker-food.svg" alt="Freaker Food" />
+      </Link>
 
-      <Button
-        title="Cadastrar"
-        color="green"
-        height="40px"
-        width="135px"
-        onClick={() => {
-          setWhichModal('register')
-          setModalVisible(true)
-        }}
-        icon="/images/icons/plus.svg"
-      />
+      <UserInfo>
+        <Avatar />
+
+        <span>Nícolas Santos Carvalho</span>
+      </UserInfo>
     </Container>
   )
 }

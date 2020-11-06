@@ -1,30 +1,19 @@
 import React from 'react'
 
-import {
-  Container,
-  CardHeader,
-  Title,
-  CardBody,
-  Salary,
-  DateBirth,
-  Status,
-  CardBottom
-} from './styles'
+import EllipsisMenu from './EllipsisMenu'
 
-const Card = ({ children, name, salary, dateBirth, status }) => {
+import { Container, Line, Main } from './styles'
+
+const Card = ({ children }) => {
   return (
     <Container>
-      <CardHeader>
-        <Title>{name}</Title>
-      </CardHeader>
-      <CardBody>
-        <Salary>Salário: <span>{salary}</span></Salary>
-        <DateBirth>Data de nascimento: <span>{dateBirth}</span></DateBirth>
-        <Status>Status: <span>{status ? 'Ativo' : 'Inativo'}</span></Status>
-      </CardBody>
-      <CardBottom>
+      <Line />
+
+      <Main>
         {children}
-      </CardBottom>
+
+        <EllipsisMenu />
+      </Main>
     </Container>
   )
 }

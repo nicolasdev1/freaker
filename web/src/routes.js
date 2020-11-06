@@ -1,31 +1,24 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-
-import Login from './pages/Login'
-import Dashboard from './pages/Dashboard'
-
-import Overview from './components/Overview'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import * as ROUTES from './constants/routes'
 
-const Routes = () => (
-  <Router>
-    <Switch>
-      <Route exact path={ROUTES.DEFAULT}>
-        <Redirect to={ROUTES.LOGIN} />
-      </Route>
+import Landing from './pages/Landing'
+import Dashboard from './pages/Dashboard'
+import ComingSoon from './pages/ComingSoon'
 
-      <Route path={ROUTES.LOGIN}>
-        <Login />
-      </Route>
+const Routes = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path={ROUTES.DEFAULT} component={Landing} />
 
-      <Dashboard>
-        <Route path={ROUTES.DASHBOARD}>
-          <Overview />
-        </Route>
-      </Dashboard>
-    </Switch>
-  </Router>
-)
+        <Route exact path={ROUTES.DASHBOARD} component={Dashboard} />
+
+        <Route exact path={ROUTES.COMING_SOON} component={ComingSoon} />
+      </Switch>
+    </BrowserRouter >
+  )
+}
 
 export default Routes

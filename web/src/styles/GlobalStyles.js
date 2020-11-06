@@ -1,24 +1,24 @@
 import { createGlobalStyle } from 'styled-components'
 
-export default createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-    transition: background 400ms ease;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Roboto, sans-serif;
+    color: #3F3D56;
+    background-color: #f5f5f5;
   }
 
-  *, button, input {
+  button, input {
     border: 0;
-    outline: 0;
-    background: none;
-
-    font-family: 'Poppins', sans-serif;
-    color: ${({ theme: { colors } }) => colors.text}
-  }
-
-  html, body, #root {
-    height: 100%;
+    list-style: none;
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
   }
 `
+
+export default GlobalStyles
