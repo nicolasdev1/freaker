@@ -7,7 +7,7 @@ import NavBar from '../../components/NavBar'
 import Totals from '../../components/Totals'
 import AccountInformation from '../../components/AccountInformation'
 import RecentActivities from '../../components/RecentActivities'
-import Orders from '../../components/Orders'
+import CardOrders from '../../components/CardOrders'
 import Footer from '../../components/Footer'
 
 const Dashboard = () => {
@@ -19,7 +19,7 @@ const Dashboard = () => {
       <Totals />
       <AccountInformation />
       <RecentActivities />
-      <Orders />
+      <CardOrders />
       <Footer />
     </Container>
   )

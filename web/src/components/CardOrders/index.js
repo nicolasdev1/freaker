@@ -4,14 +4,14 @@ import Card from '../Card'
 
 import { Container } from './styles'
 
-const Orders = () => {
+const CardOrders = () => {
   return (
     <Container>
       <Card>
-        Orders
+        Pedidos
       </Card>
     </Container>
   )
 }
 
-export default Orders
+export default CardOrders
