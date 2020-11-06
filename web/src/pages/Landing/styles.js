@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 
 export const Wrapper = styled.div`
   height: 100vh;
+  margin: 0 auto;
+
+  max-width: 1750px;
 
   background: url('/images/landing.svg') no-repeat 950px 60%;
 `

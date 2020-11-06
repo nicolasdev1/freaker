@@ -22,7 +22,7 @@ const NavBar = ({ page = 'Visão geral' }) => {
     {
       id: 3,
       title: 'Pedidos',
-      to: ROUTES.COMING_SOON,
+      to: ROUTES.ORDERS,
       active: false
     },
     {
