@@ -1,21 +1,31 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
-import Product from './pages/Products/Product'
+import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
 
-import Home from './pages/Home'
+import Overview from './components/Overview'
 
-const Routes = () => {
-  return (
-    <BrowserRouter>
-      <Switch>
+import * as ROUTES from './constants/routes'
 
-        <Route exact path="/" component={Home} />
-        <Route path="/product" component={Product} />
+const Routes = () => (
+  <Router>
+    <Switch>
+      <Route exact path={ROUTES.DEFAULT}>
+        <Redirect to={ROUTES.LOGIN} />
+      </Route>
 
-      </Switch>
-    </BrowserRouter >
-  )
-}
+      <Route path={ROUTES.LOGIN}>
+        <Login />
+      </Route>
+
+      <Dashboard>
+        <Route path={ROUTES.DASHBOARD}>
+          <Overview />
+        </Route>
+      </Dashboard>
+    </Switch>
+  </Router>
+)
 
 export default Routes

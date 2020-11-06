@@ -1,23 +1,24 @@
 import { createGlobalStyle } from 'styled-components'
 
-const GlobalStyles = createGlobalStyle`
+export default createGlobalStyle`
   * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    transition: background 400ms ease;
   }
 
-  body {
-    font-family: 'Roboto', sans-serif;
-    background: #ffffff;
-  }
-
-  button, input {
+  *, button, input {
     border: 0;
-    list-style: none;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
+    outline: 0;
+    background: none;
+
+    font-family: 'Poppins', sans-serif;
+    color: ${({ theme: { colors } }) => colors.text}
+  }
+
+  html, body, #root {
+    height: 100%;
   }
 `
-
-export default GlobalStyles

@@ -1,50 +1,31 @@
-import React from 'react';
+import React from 'react'
 
-import {
-  Container,
-  Wrapper,
-  ContentLeft,
-  ContentCenter,
-  ContentRight,
-  IconMoon,
-  IconShopping,
-  WrapperBar,
-  Main,
-} from './styles';
+import Button from '../Button'
 
-const Header = () => {
+import useModal from '../../hooks/useModal'
+
+import { Container, Title } from './styles'
+
+const Header = ({ title }) => {
+  const { setModalVisible, setWhichModal } = useModal()
+
   return (
     <Container>
-      <Wrapper>
+      <Title>{title}</Title>
 
-        <ContentLeft>
-          <IconMoon />
-        </ContentLeft>
-
-        <ContentCenter>
-          <h1>Freaker</h1>
-          <img src="/images/icons/freaker.svg" alt="Freaker" />
-        </ContentCenter>
-
-        <ContentRight>
-          <IconShopping />
-        </ContentRight>
-
-      </Wrapper>
-      <TopBar />
+      <Button
+        title="Cadastrar"
+        color="green"
+        height="40px"
+        width="135px"
+        onClick={() => {
+          setWhichModal('register')
+          setModalVisible(true)
+        }}
+        icon="/images/icons/plus.svg"
+      />
     </Container>
-  );
-};
+  )
+}
 
-const TopBar = () => (
-  <WrapperBar>
-    <Main>
-      <span>INICIO</span>
-      <span>PEDIDOS</span>
-      <span>PRODUTOS</span>
-      <span>CLIENTES</span>
-    </Main>
-  </WrapperBar>
-);
-
-export default Header;
+export default Header
