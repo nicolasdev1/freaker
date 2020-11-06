@@ -28,8 +28,8 @@ class OrderController {
 
   async store (request, response) {
     try {
-      const { products, ...data } = request.body
-      const order = await Order.create(data)
+      const { products, user_id } = request.body
+      const order = await Order.create({ user_id })
 
       if (products && products.length > 0) {
         order.setProducts(products)
@@ -45,7 +45,7 @@ class OrderController {
     try {
       const { id } = request.params
 
-      const { products, ...data } = request.body
+      const { products, status } = request.body
 
       const order = await Order.findByPk(id)
 
@@ -55,7 +55,7 @@ class OrderController {
 
       await order.update({
         products,
-        data
+        status
       })
 
       if (products && products.length > 0) {
