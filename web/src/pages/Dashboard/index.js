@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Container from '../../components/Container'
 import Header from '../../components/Header'
 import Profile from '../../components/Profile'
 import NavBar from '../../components/NavBar'
@@ -9,15 +10,12 @@ import RecentActivities from '../../components/RecentActivities'
 import Orders from '../../components/Orders'
 import Footer from '../../components/Footer'
 
-
-import { Container } from './styles'
-
 const Dashboard = () => {
   return (
     <Container>
       <Header />
       <Profile />
-      <NavBar />
+      <NavBar page="Visão geral" />
       <Totals />
       <AccountInformation />
       <RecentActivities />
