@@ -8,6 +8,11 @@ export const Products = styled.div`
 `
 
 export const CardItem = styled.div`
+  .selected {
+    background: #2e2e2e;
+    border: 4px solid #e04e5b;
+  }
+
   display: flex;
   flex-direction: column;
 
@@ -32,7 +37,7 @@ export const CardItem = styled.div`
     border-bottom-right-radius: 0;
 
     cursor: pointer;
-    
+
     flex-shrink: 0;
 
     margin: 0 auto;
@@ -40,7 +45,7 @@ export const CardItem = styled.div`
 
     max-width:300px;
     max-height:147px;
-    min-height:147px; 
+    min-height:147px;
     min-width:300px;
     width: 100%;
     height: auto;

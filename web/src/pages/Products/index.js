@@ -8,6 +8,7 @@ import NavBar from '../../components/NavBar'
 import Footer from '../../components/Footer'
 import CardProducts from '../../components/CardProducts'
 import Title from '../../components/Title'
+import Line from '../../components/Line'
 
 import api from '../../services/api'
 
@@ -15,7 +16,6 @@ import {
   Content,
   Listing,
   Form,
-  Line,
   ButtonContainer,
   Enter,
   Wrapper

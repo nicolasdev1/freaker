@@ -17,6 +17,10 @@ import {
 } from './styles'
 
 const Orders = () => {
+  const [products, setProducts] = useState([])
+
+  console.log(products)
+
   function handleCreateOrder(event) {
     event.preventDefault()
   }
@@ -30,7 +34,7 @@ const Orders = () => {
       <Form onSubmit={handleCreateOrder}>
         <Title text="Efetuar um pedido" />
 
-        <CardProducts />
+        <CardProducts items={setProducts} />
 
         <Enter type="submit">
           <span>

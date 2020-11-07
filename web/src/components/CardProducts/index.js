@@ -7,7 +7,9 @@ import { Products, CardItem, Price } from './styles'
 
 import api from '../../services/api'
 
-const CardProducts = () => {
+const CardProducts = ({ items = () => {} }) => {
+  const [selectedItems, setSelectedItems] = useState([])
+
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
 
@@ -24,6 +26,23 @@ const CardProducts = () => {
     })
   }, [])
 
+  function handleSelectItem(id) {
+
+    // findIndex retorna valor igual ou acima de 0 se o que estou buscando estiver dentro do array
+    const alreadySelected = selectedItems.findIndex(product => product === id)
+
+    if (alreadySelected >= 0) {
+        // nessa variável estou filtrando a lista de itens selecionados e pegando apenas aquele item que for diferente do id que quero remover
+        const filteredItems = selectedItems.filter(product => product !== id)
+
+        setSelectedItems(filteredItems)
+    } else {
+        setSelectedItems([ ...selectedItems, id ])
+    }
+
+    items(selectedItems)
+}
+
   return (
     <>
       <Search
@@ -38,8 +57,15 @@ const CardProducts = () => {
 
       <Products>
         {filteredProducts.map((product) => (
-          <CardItem key={product.id}>
-            <img src={product.images[0]} alt={product.name} />
+          <CardItem
+            key={product.id}
+            onClick={() => handleSelectItem(product.id)}
+          >
+            <img
+              src={product.images[0]}
+              alt={product.name}
+              className={selectedItems.includes(product.id) ? 'selected' : ''}
+            />
             <span>{product.name}</span>
 
             <Price>
