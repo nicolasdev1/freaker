@@ -5,7 +5,7 @@ class User extends Model {
     super.init(
       {
         name: DataTypes.STRING,
-        address: DataTypes.ARRAY(DataTypes.JSON),
+        address: DataTypes.JSON,
         phone: DataTypes.STRING
       },
       {

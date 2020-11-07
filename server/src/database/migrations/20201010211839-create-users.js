@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false
       },
       address: {
-        type: Sequelize.ARRAY(Sequelize.JSON({
+        type: Sequelize.JSON({
           street: {
             type: Sequelize.STRING,
             allowNull: false
@@ -39,7 +39,7 @@ module.exports = {
             type: Sequelize.STRING,
             allowNull: false
           }
-        })),
+        }),
         allowNull: false
       },
       phone: {
