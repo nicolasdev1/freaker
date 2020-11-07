@@ -15,7 +15,7 @@ const Dashboard = () => {
     <Container>
       <Header />
       <Profile />
-      <NavBar page="Visão geral" />
+      <NavBar active="Visão geral" />
       <Totals />
       <AccountInformation />
       <RecentActivities />

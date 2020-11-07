@@ -5,16 +5,10 @@ import Header from '../../components/Header'
 import Profile from '../../components/Profile'
 import NavBar from '../../components/NavBar'
 import CardOrders from '../../components/CardOrders'
-import IconSearch from '../../components/IconSearch'
 import Footer from '../../components/Footer'
-
-import api from '../../services/api'
 
 import {
   Form,
-  Search,
-  WrapperInput,
-  MenuSearch,
   Products,
   CardItem,
   Price,
@@ -22,59 +16,18 @@ import {
 } from './styles'
 
 const Orders = () => {
-  const [customer, setCustomer] = useState([])
-  const [filterCustomer, setFilterCustomer] = useState([])
-  const [result, setResult] = useState('')
-
-  useEffect(() => {
-    api.get('/users').then((response) => {
-      setCustomer(response.data)
-      setFilterCustomer(response.data)
-    })
-  }, [])
-
-  useEffect(() => {
-    const results = filterCustomer.filter((response) => {
-      return response.name.toLowerCase().includes(result)
-    })
-    setCustomer(results)
-  }, [result])
-
-  useEffect(() => {}, [])
-
   function handleCreateOrder(event) {
     event.preventDefault()
-  }
-
-  const onChange = (event) => {
-    setResult(event.target.value)
   }
 
   return (
     <Container>
       <Header />
       <Profile />
-      <NavBar page="Pedidos" />
+      <NavBar active="Pedidos" />
 
       <Form onSubmit={handleCreateOrder}>
-        <Search>
-          <h1>Fazer um pedido</h1>
-          <WrapperInput>
-            <MenuSearch>
-              <span>
-                <IconSearch />
-              </span>
-              <input
-                type="search"
-                placeholder="Buscar cliente"
-                onChange={onChange}
-              />
-            </MenuSearch>
-          </WrapperInput>
-          {customer.map((res, index) => (
-            <h1 key={res.index}>{res.name}</h1>
-          ))}
-        </Search>
+        <h1>Fazer um pedido</h1>
 
         <Products>
           <CardItem>

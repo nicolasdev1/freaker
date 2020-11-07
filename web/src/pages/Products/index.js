@@ -15,7 +15,7 @@ const Products = () => {
     <Container>
       <Header />
       <Profile />
-      <NavBar page="Produtos" />
+      <NavBar active="Produtos" />
       <Totals />
       <AccountInformation />
       <RecentActivities />

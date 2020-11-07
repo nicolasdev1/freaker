@@ -8,10 +8,10 @@ const IconSearch = () => {
       viewBox="0 0 48 48"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g fill="#dcdcdc" fill-rule="evenodd">
+      <g fill="#dcdcdc" fillRule="evenodd">
         <path
           d="M22 37c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15zm0 3c-9.941 0-18-8.059-18-18S12.059 4 22 4s18 8.059 18 18-8.059 18-18 18z"
-          fill-rule="nonzero"
+          fillRule="nonzero"
         ></path>
         <rect
           transform="rotate(-45 37.793 38.293)"

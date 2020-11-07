@@ -5,7 +5,7 @@ import Item from './Item'
 
 import { Wrapper, Container } from './styles'
 
-const NavBar = ({ page = 'Visão geral' }) => {
+const NavBar = ({ active = 'Visão geral' }) => {
   const items = [
     {
       id: 1,
@@ -34,7 +34,7 @@ const NavBar = ({ page = 'Visão geral' }) => {
     {
       id: 5,
       title: 'Clientes',
-      to: ROUTES.COMING_SOON,
+      to: ROUTES.USERS,
       active: false
     },
     {
@@ -52,7 +52,7 @@ const NavBar = ({ page = 'Visão geral' }) => {
   ]
 
   items.map(item => {
-    if (item.title === page) {
+    if (item.title === active) {
       item.active = true
     }
   })
