@@ -6,7 +6,9 @@ import Profile from '../../components/Profile'
 import NavBar from '../../components/NavBar'
 import CardOrders from '../../components/CardOrders'
 import Footer from '../../components/Footer'
+import CardProducts from '../../components/CardProducts'
 
+<<<<<<< HEAD
 import {
   Form,
   Products,
@@ -16,6 +18,38 @@ import {
 } from './styles'
 
 const Orders = () => {
+=======
+import api from '../../services/api'
+
+import { Form, Search, WrapperInput, MenuSearch, Enter } from './styles'
+
+const Orders = () => {
+  const [customer, setCustomer] = useState([])
+  const [filterCustomer, setFilterCustomer] = useState([])
+  const [result, setResult] = useState('')
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    api.get('/users').then((response) => {
+      setCustomer(response.data)
+      setFilterCustomer(response.data)
+    })
+  }, [])
+
+  useEffect(() => {
+    const results = filterCustomer.filter((response) => {
+      return response.name.toLowerCase().includes(result)
+    })
+    setCustomer(results)
+  }, [result])
+
+  useEffect(() => {
+    api.get('/products').then((response) => {
+      setProducts(response.data)
+    })
+  }, [])
+
+>>>>>>> a01f7ec4e743304a5f0ec87198af9028621c4690
   function handleCreateOrder(event) {
     event.preventDefault()
   }
@@ -29,127 +63,7 @@ const Orders = () => {
       <Form onSubmit={handleCreateOrder}>
         <h1>Fazer um pedido</h1>
 
-        <Products>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-        </Products>
+        <CardProducts />
 
         <Enter type="submit">
           <span>
