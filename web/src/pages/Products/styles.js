@@ -26,11 +26,6 @@ export const Form = styled.form`
   }
 `
 
-export const Line = styled.div`
-  margin-top: 50px;
-  border-bottom: 1px solid #d3d3d3;
-`
-
 export const Enter = styled.button`
   display: flex;
   align-items: center;
