@@ -7,24 +7,17 @@ import NavBar from '../../components/NavBar'
 import CardOrders from '../../components/CardOrders'
 import IconSearch from '../../components/IconSearch'
 import Footer from '../../components/Footer'
+import CardProducts from '../../components/CardProducts'
 
 import api from '../../services/api'
 
-import {
-  Form,
-  Search,
-  WrapperInput,
-  MenuSearch,
-  Products,
-  CardItem,
-  Price,
-  Enter,
-} from './styles'
+import { Form, Search, WrapperInput, MenuSearch, Enter } from './styles'
 
 const Orders = () => {
   const [customer, setCustomer] = useState([])
   const [filterCustomer, setFilterCustomer] = useState([])
   const [result, setResult] = useState('')
+  const [products, setProducts] = useState([])
 
   useEffect(() => {
     api.get('/users').then((response) => {
@@ -40,7 +33,11 @@ const Orders = () => {
     setCustomer(results)
   }, [result])
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    api.get('/products').then((response) => {
+      setProducts(response.data)
+    })
+  }, [])
 
   function handleCreateOrder(event) {
     event.preventDefault()
@@ -76,127 +73,7 @@ const Orders = () => {
           ))}
         </Search>
 
-        <Products>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-          <CardItem>
-            <img
-              src="https://burgerx.com.br/assets/img/galeria/burgers/triple-x.jpg"
-              alt="Product"
-            />
-            <span>
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-              X-burguer picanha, alface, queijo, bacon,dwqdqwnjkwdqwdiwqndn
-            </span>
-
-            <Price>
-              <span>R$20,00</span>
-            </Price>
-          </CardItem>
-        </Products>
+        <CardProducts />
 
         <Enter type="submit">
           <span>
