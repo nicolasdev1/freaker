@@ -7,17 +7,26 @@ import Profile from '../../components/Profile'
 import NavBar from '../../components/NavBar'
 import Footer from '../../components/Footer'
 import CardProducts from '../../components/CardProducts'
+import Title from '../../components/Title'
 
 import api from '../../services/api'
 
-import { Content, Listing, Form, Line, ButtonContainer, Enter, Wrapper } from './styles'
+import {
+  Content,
+  Listing,
+  Form,
+  Line,
+  ButtonContainer,
+  Enter,
+  Wrapper
+} from './styles'
 
 const Products = () => {
   const [name, setName] = useState('')
   const [image, setImage] = useState('')
-  const [cost_price, setCostPrice] = useState(0)
-  const [sale_price, setSalePrice] = useState(0)
-  const [stock, setStock] = useState(0)
+  const [cost_price, setCostPrice] = useState('')
+  const [sale_price, setSalePrice] = useState('')
+  const [stock, setStock] = useState('')
 
   const history = useHistory()
 
@@ -30,12 +39,12 @@ const Products = () => {
         images: [
           image
         ],
-        cost_price,
-        sale_price,
-        stock
+        cost_price: parseInt(cost_price),
+        sale_price: parseInt(sale_price),
+        stock: parseInt(stock)
       }
 
-      await api.post('products', data)
+      await api.post('/products', data)
 
       alert('Produto cadastrado com sucesso.')
       history.go()
@@ -49,18 +58,12 @@ const Products = () => {
     <Container>
       <Header />
       <Profile />
-<<<<<<< HEAD
       <NavBar active="Produtos" />
-      <Totals />
-      <AccountInformation />
-      <RecentActivities />
-      <CardOrders />
-=======
-      <NavBar page="Produtos" />
 
       <Content>
         <Listing>
-          <h1>Produtos</h1>
+          <Title text="Lista de produtos" />
+
 
           <CardProducts />
         </Listing>
@@ -101,7 +104,7 @@ const Products = () => {
           <div>
             <label htmlFor="sale_price">Preço de venda</label>
             <input
-              type="text"
+              type="number"
               value={sale_price}
               onChange={(event) => setSalePrice(event.target.value)}
             />
@@ -110,7 +113,7 @@ const Products = () => {
           <div>
             <label htmlFor="stock">Estoque</label>
             <input
-              type="text"
+              type="number"
               value={stock}
               onChange={(event) => setStock(event.target.value)}
             />
@@ -126,10 +129,9 @@ const Products = () => {
               <strong>Cadastrar produto</strong>
             </Enter>
           </ButtonContainer>
-          
+
         </Form>
       </Content>
->>>>>>> a01f7ec4e743304a5f0ec87198af9028621c4690
       <Footer />
     </Container>
   )

@@ -16,7 +16,7 @@ const Landing = () => {
         <h1>Pronto para gerenciar seu restaurante?</h1>
         <p>Prestamos serviço para pessoas que buscam levar o seu restaurante para a internet.</p>
 
-        <Enter to={ROUTES.DASHBOARD}>
+        <Enter to={ROUTES.ORDERS}>
           <span>
             <img src="/images/icons/enter.svg" alt="Entrar"/>
           </span>

@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import * as ROUTES from './constants/routes'
 
 import Landing from './pages/Landing'
-import Dashboard from './pages/Dashboard'
 import ComingSoon from './pages/ComingSoon'
 import Products from './pages/Products'
 import Orders from './pages/Orders'
@@ -15,8 +14,6 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path={ROUTES.DEFAULT} component={Landing} />
-
-        <Route exact path={ROUTES.DASHBOARD} component={Dashboard} />
 
         <Route path={ROUTES.COMING_SOON} component={ComingSoon} />
 

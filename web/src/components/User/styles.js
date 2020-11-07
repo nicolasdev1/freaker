@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
 
   width: 100%;
-  height: 220px;
+  height: 250px;
 
   border: 1px solid #d3d3d3;
   border-radius: 8px;
@@ -34,7 +34,7 @@ export const InfoContainer = styled.div`
     font-weight: 500;
 
     > label {
-      margin-left: 4px;
+      margin-left: 6px;
       font-size: 14px;
     }
 

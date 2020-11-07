@@ -5,7 +5,6 @@ export const WrapperInput = styled.div`
   flex: 3;
   align-items: center;
   max-width: 500px;
-
 `
 
 export const MenuSearch = styled.div`
@@ -26,7 +25,7 @@ export const MenuSearch = styled.div`
   input {
     margin-top: 20px;
     width: 100%;
-    padding: 20px 0 20px 78px;
+    padding: 20px 20px 20px 78px;
 
     border: 1px solid #d3d3d3;
 

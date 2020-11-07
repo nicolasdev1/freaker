@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import IconSearch from '../../components/IconSearch'
+import IconSearch from './IconSearch'
 
 import { WrapperInput, MenuSearch } from './styles'
 

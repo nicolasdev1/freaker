@@ -48,7 +48,7 @@ const User = ({
       <InfoContainer>
         <span>
           <img src="/images/icons/user.svg" alt="Avatar do cliente" />
-          {name}<label>({phone})</label>
+          {name}<label>#{id}</label>
         </span>
 
         <p>{street}, <span>{number}</span></p>
@@ -56,6 +56,8 @@ const User = ({
         <p>{zipcode}</p>
 
         <p>{city} - <span>{state}</span></p>
+
+        <p>{phone}</p>
       </InfoContainer>
 
       <ButtonsContainer>

@@ -10,7 +10,7 @@ const NavBar = ({ active = 'Visão geral' }) => {
     {
       id: 1,
       title: 'Visão geral',
-      to: ROUTES.DASHBOARD,
+      to: ROUTES.COMING_SOON,
       active: false
     },
     {
