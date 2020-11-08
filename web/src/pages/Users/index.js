@@ -20,14 +20,10 @@ import {
 } from './styles'
 
 const Users = () => {
-  const history = useHistory()
-
-  const [users, setUsers] = useState([])
-  const [filteredUsers, setFilteredUsers] = useState([])
-
-const Users = () => {
   const [notFound, setNotFound] = useState(false)
   const [loading, setLoading] = useState(true)
+
+  const history = useHistory()
 
   const [name, setName] = useState('')
   const [street, setStreet] = useState('')
@@ -37,16 +33,6 @@ const Users = () => {
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
   const [phone, setPhone] = useState('')
-
-  useEffect(() => {
-    api.get('/users').then(response => {
-      setUsers(response.data)
-
-      setFilteredUsers(response.data)
-
-      setLoading(false)
-    })
-  }, [])
 
   async function handleCreateUser() {
 
@@ -192,8 +178,7 @@ const Users = () => {
         </Form>
         <Footer />
     </Container>
-    )
-  }
+  )
 }
 
 export default Users
