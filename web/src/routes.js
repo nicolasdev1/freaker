@@ -8,6 +8,7 @@ import ComingSoon from './pages/ComingSoon'
 import Products from './pages/Products'
 import Orders from './pages/Orders'
 import Users from './pages/Users'
+import EditUser from './pages/Users/EditUser'
 
 const Routes = () => {
   return (
@@ -22,6 +23,8 @@ const Routes = () => {
         <Route exact path={ROUTES.ORDERS} component={Orders} />
 
         <Route exact path={ROUTES.USERS} component={Users} />
+
+        <Route exact path="/users/edit/:id" component={EditUser} />
       </Switch>
     </BrowserRouter >
   )

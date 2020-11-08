@@ -1,4 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useHistory, Redirect, Link } from 'react-router-dom'
+
+import * as ROUTES from '../../constants/routes'
 
 import api from '../../services/api'
 
@@ -22,9 +25,15 @@ const User = ({
   onUpdate = () => {},
   onClick = () => {}
 }) => {
-  const handleUpdateUser = async (id) => {
-    alert('Funcionalidade indisponível.')
-  }
+  // const history = useHistory()
+
+  // const handleUpdateUser = async (id) => {
+  //   alert('Funcionalidade indisponível.')
+  // }
+
+  // const handleNavigation = () => {
+  //   history.push(ROUTES.EDIT_USER)
+  // }
 
   const handleDeleteUser = async (id) => {
     const confirm = window.confirm('Tem certeza que deseja remover o usuário?')
@@ -39,10 +48,6 @@ const User = ({
 
     alert('Usuário removido com sucesso.')
   }
-
-  useEffect(() => {
-
-  }, [])
 
   return (
     <Container onClick={onClick}>
@@ -62,9 +67,10 @@ const User = ({
       </InfoContainer>
 
       <ButtonsContainer>
-        <button onClick={() => handleUpdateUser(id)}>
+        <Link to={`/users/edit/${id}`}>
           Editar
-        </button>
+        </Link>
+
 
         <button onClick={() => handleDeleteUser(id)}>
           Excluir
