@@ -1,18 +1,6 @@
 import styled from 'styled-components'
 
-export const Title = styled.h1`
-  margin-top: 30px;
-`
-
-export const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
-
-  margin: 50px 0;
-`
-
-export const Form = styled.form`
+export const Form = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,3 +78,5 @@ export const ButtonContainer = styled.div`
   width: 40%;
   margin-top: 30px;
 `
+
+
