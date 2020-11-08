@@ -7,6 +7,7 @@ import { WrapperInput, MenuSearch } from './styles'
 const Search = ({
   placeholder = 'Buscar',
   dataToFilter,
+  entity,
   hasNotFound = () => {},
   onFiltered = () => {}
 }) => {
@@ -18,6 +19,12 @@ const Search = ({
 
   useEffect(() => {
     const result = dataToFilter.filter(item =>
+      entity === 'order'
+      ?
+      item.users.name
+        .toLowerCase()
+        .includes(inputValue.toLowerCase())
+      :
       item.name
         .toLowerCase()
         .includes(inputValue.toLowerCase())

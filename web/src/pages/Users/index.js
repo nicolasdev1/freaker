@@ -5,11 +5,11 @@ import Header from '../../components/Header'
 import Profile from '../../components/Profile'
 import NavBar from '../../components/NavBar'
 import Status from '../../components/Status'
-import User from '../../components/User'
 import Search from '../../components/Search'
 import Line from '../../components/Line'
 import Footer from '../../components/Footer'
 import Button from '../../components/Button'
+import CardsGrid from '../../components/CardsGrid'
 
 import api from '../../services/api'
 
@@ -22,22 +22,10 @@ import {
   ButtonContainer,
 } from './styles'
 
-const Users = () => {
-  const [users, setUsers] = useState([])
-  const [filteredUsers, setFilteredUsers] = useState([])
 
+const Users = () => {
   const [notFound, setNotFound] = useState(false)
   const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    api.get('/users').then(response => {
-      setUsers(response.data)
-
-      setFilteredUsers(response.data)
-
-      setLoading(false)
-    })
-  }, [])
 
   return (
     <Container>
@@ -47,38 +35,11 @@ const Users = () => {
 
       <Title>Lista de clientes</Title>
 
-      <Search
-        placeholder="Buscar clientes"
-        dataToFilter={users}
-        onFiltered={setFilteredUsers}
-        hasNotFound={setNotFound}
+      <CardsGrid
+        entity="user"
+        gridColumns="repeat(3, 1fr)"
+        selectable={false}
       />
-
-      <Status title="Nenhum usuário encontrado" show={notFound} />
-
-      <Status title="Carregando..." show={loading} />
-
-      <Grid>
-        {
-          filteredUsers.map(user =>
-            <User
-              key={user.id}
-              id={user.id}
-              name={user.name}
-              street={user.address.street}
-              number={user.address.number}
-              neighborhood={user.address.neighborhood}
-              zipcode={user.address.zipcode}
-              city={user.address.city}
-              state={user.address.state}
-              phone={user.phone}
-              onDelete={(id) =>
-                setFilteredUsers(users.filter(user => user.id !== id))
-              }
-            />
-          )
-        }
-      </Grid>
 
       <Line />
 

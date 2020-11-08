@@ -3,31 +3,25 @@ import React from 'react'
 import { Wrapper, Container, Price } from './styles'
 
 const Product = ({
-  id,
-  image,
-  name,
-  sale_price,
-  cost_price,
-  stock,
-  className,
+  data,
+  selected,
   onClick
 }) => {
   return (
-    <Wrapper className={className}>
+    <Wrapper selected={selected}>
       <Container
-        key={id}
         onClick={onClick}
-        className={className}
+        selected={selected}
       >
         <img
-          src={image}
-          alt={name}
+          src={data.images[0]}
+          alt={data.name}
         />
-        <span>{name}</span>
+        <span>{data.name}</span>
 
         <Price>
           <span>
-            {sale_price.toLocaleString('pt-BR', {
+            {data.sale_price.toLocaleString('pt-BR', {
               style: 'currency',
               currency: 'BRL'
             })}

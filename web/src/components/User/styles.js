@@ -1,13 +1,22 @@
 import styled from 'styled-components'
 
+export const Wrapper = styled.div`
+  border: ${({ selected }) => selected ? '3px solid #e04e5b' : '3px solid transparent'};
+  border-radius: 11px;
+
+  user-select: none;
+  cursor: pointer;
+`
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 100%;
-  height: 250px;
+  border: ${({ selected }) => selected ? '0px solid transparent' : '1px solid #d3d3d3'};;
 
-  border: 1px solid #d3d3d3;
+  width: 100%;
+  height: ${({ buttons }) => buttons ? '250px' : '100%'};
+
   border-radius: 8px;
 
   transition: background-color .2s;
@@ -71,10 +80,10 @@ export const ButtonsContainer = styled.div`
       border-right: 1px solid #d3d3d3;
       border-bottom-left-radius: 6px;
 
-      background: rgba(63, 61, 86, 0.95);
+      background: rgba(35, 78, 125, 0.90);
 
       &:hover {
-        background: #3f3d56;
+        background: #234e7d;
       }
     }
 

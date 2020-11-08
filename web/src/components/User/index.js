@@ -1,23 +1,18 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import api from '../../services/api'
 
 import {
+  Wrapper,
   Container,
   ButtonsContainer,
   InfoContainer
 } from './styles'
 
 const User = ({
-  id,
-  name,
-  street,
-  number,
-  neighborhood,
-  zipcode,
-  city,
-  state,
-  phone,
+  data,
+  buttons = true,
+  selected,
   onDelete = () => {},
   onUpdate = () => {},
   onClick = () => {}
@@ -40,37 +35,38 @@ const User = ({
     alert('Usuário removido com sucesso.')
   }
 
-  useEffect(() => {
-
-  }, [])
-
   return (
-    <Container onClick={onClick}>
-      <InfoContainer>
-        <span>
-          <img src="/images/icons/user.svg" alt="Avatar do cliente" />
-          {name}<label>#{id}</label>
-        </span>
+    <Wrapper selected={selected}>
+      <Container selected={selected} buttons={buttons} onClick={onClick}>
+        <InfoContainer>
+          <span>
+            <img src="/images/icons/user.svg" alt="Avatar do cliente" />
+            {data.name}<label>#{data.id}</label>
+          </span>
 
-        <p>{street}, <span>{number}</span></p>
-        <p>{neighborhood}</p>
-        <p>{zipcode}</p>
+          <p>{data.address.street}, <span>{data.address.number}</span></p>
+          <p>{data.address.neighborhood}</p>
+          <p>{data.address.zipcode}</p>
 
-        <p>{city} - <span>{state}</span></p>
+          <p>{data.address.city} - <span>{data.address.state}</span></p>
 
-        <p>{phone}</p>
-      </InfoContainer>
+          <p>{data.phone}</p>
+        </InfoContainer>
 
-      <ButtonsContainer>
-        <button onClick={() => handleUpdateUser(id)}>
-          Editar
-        </button>
+        {
+        buttons &&
+          <ButtonsContainer>
+            <button type="button" onClick={() => handleUpdateUser(data.id)}>
+              Editar
+            </button>
 
-        <button onClick={() => handleDeleteUser(id)}>
-          Excluir
-        </button>
-      </ButtonsContainer>
-    </Container>
+            <button type="button" onClick={() => handleDeleteUser(data.id)}>
+              Excluir
+            </button>
+          </ButtonsContainer>
+        }
+      </Container>
+    </Wrapper>
   )
 }
 

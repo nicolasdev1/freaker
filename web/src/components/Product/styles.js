@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  border: ${({ className }) => className === 'selected' ? '3px solid #e04e5b' : '3px solid transparent'};
+  border: ${({ selected }) => selected ? '3px solid #e04e5b' : '3px solid transparent'};
   border-radius: 11px;
 
   user-select: none;
+  cursor: pointer;
 `
 
 export const Container = styled.div`
@@ -13,7 +14,7 @@ export const Container = styled.div`
 
   border-radius: 8px;
 
-  border: ${({ className }) => className === 'selected' ? '0px solid transparent' : '1px solid #d3d3d3'};;
+  border: ${({ selected }) => selected ? '0px solid transparent' : '1px solid #d3d3d3'};
 
   text-overflow: ellipsis;
   overflow: hidden;
@@ -27,16 +28,14 @@ export const Container = styled.div`
     transition: 200ms;
     overflow: hidden;
 
-    cursor: pointer;
-
     flex-shrink: 0;
 
     margin: 0 auto;
     object-fit: cover;
 
     max-width: 100%;
-    max-height: 147px;
-    min-height: 147px;
+    max-height: 50%;
+    min-height: 50%;
     min-width: 300px;
     width: 100%;
     height: auto;

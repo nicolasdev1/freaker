@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import Container from '../../components/Container'
@@ -15,7 +15,7 @@ import api from '../../services/api'
 import { Form } from './styles'
 
 const Orders = () => {
-  const [selectedUser, setSelectedUser] = useState()
+  const [selectedUser, setSelectedUser] = useState(Number)
   const [selectedProducts, setSelectedProducts] = useState([])
 
   const history = useHistory()
@@ -29,18 +29,16 @@ const Orders = () => {
 
       await api.post('/orders', data)
 
+      history.go()
       alert('Pedido efetuado com sucesso.')
     } catch (error) {
       console.log(error)
-
-      alert('Ocorreu um erro ao criar o produto.')
     }
-
-    history.go()
-
-    console.log(selectedUser)
-    console.log(selectedProducts)
   }
+
+  useEffect(() => {
+    console.log(selectedUser)
+  }, [selectedUser])
 
   return (
     <Container>
@@ -48,7 +46,14 @@ const Orders = () => {
       <Profile />
       <NavBar active="Pedidos" />
 
-      <Form onSubmit={handleCreateOrder}>
+      <Title text="Lista de pedidos" />
+
+      <CardsGrid
+        entity="order"
+        gridColumns="repeat(2, 1fr)"
+      />
+
+      <Form>
         <Title text="Efetuar um pedido" />
 
         <h3 style={{ marginTop: 20 }}>Selecione um cliente para o seu pedido</h3>
@@ -56,7 +61,8 @@ const Orders = () => {
         <CardsGrid
           entity="user"
           gridColumns="repeat(3, 1fr)"
-          listOfSelectedItems={setSelectedUser}
+          buttons={false}
+          currentSelectedUser={setSelectedUser}
         />
 
         <h3>Selecione um ou mais produtos para o seu pedido</h3>
@@ -64,7 +70,7 @@ const Orders = () => {
         <CardsGrid
           entity="product"
           gridColumns="repeat(4, 1fr)"
-          listOfSelectedItems={setSelectedProducts}
+          currentSelectedProducts={setSelectedProducts}
         />
 
         <Button

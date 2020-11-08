@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from 'react'
 
+import Product from '../../components/Product'
+import User from '../User'
+import Order from '../../components/Order'
 import Search from '../../components/Search'
 import Status from '../../components/Status'
-import Product from '../../components/Product'
 
 import { Grid } from './styles'
 
 import api from '../../services/api'
-import User from '../User'
+
 
 const CardsGrid = ({
   selectable = true,
   entity,
+  buttons = true,
   gridColumns = 'repeat(4, 1fr)',
-  listOfSelectedItems = () => {}
+  currentSelectedProducts = () => {},
+  currentSelectedUser = () => {}
 }) => {
-  const [selectedItems, setSelectedItems] = useState([])
+  const [selectedProducts, setSelectedProducts] = useState([])
+  const [selectedUser, setSelectedUser] = useState(Number)
 
   const [receivedData, setReceivedData] = useState([])
   const [filteredReceivedData, setFilteredReceivedData] = useState([])
@@ -33,39 +38,49 @@ const CardsGrid = ({
     })
   }, [])
 
-  function handleSelectItem(id) {
+  const handleSelectUser = (id) => {
+    if (!selectable) return
 
-    if(!selectable) return
+    const alreadySelected = selectedUser === -1
 
-    // findIndex retorna valor igual ou acima de 0 se o que estou buscando estiver dentro do array
-    const alreadySelected = selectedItems.findIndex(item => item === id)
-
-    if (alreadySelected >= 0) {
-        // nessa variável estou filtrando a lista de itens selecionados e pegando apenas aquele item que for diferente do id que quero remover
-        const filteredItems = selectedItems.filter(item => item !== id)
-
-        setSelectedItems(filteredItems)
+    if (!alreadySelected) {
+      setSelectedUser(id)
     } else {
-        setSelectedItems([ ...selectedItems, id ])
+      setSelectedUser(-1)
     }
 
-    listOfSelectedItems(
-      entity === 'product'
-      ? selectedItems
-      : id
-    )
+    currentSelectedUser(id)
+  }
+
+  function handleSelectProduct(id) {
+    if (!selectable) return
+
+    // findIndex retorna valor igual ou acima de 0 se o que estou buscando estiver dentro do array
+    const alreadySelected = selectedProducts.findIndex(item => item === id)
+
+    if (alreadySelected >= 0) {
+      // nessa variável estou filtrando a lista de itens selecionados e pegando apenas aquele item que for diferente do id que quero remover
+      const filteredItems = selectedProducts.filter(item => item !== id)
+
+      setSelectedProducts(filteredItems)
+    } else {
+      setSelectedProducts([ ...selectedProducts, id ])
+    }
+
+    currentSelectedProducts(selectedProducts)
 }
 
   return (
     <>
       <Search
-        placeholder={`Buscar ${entity === 'product' ? 'produto' : 'cliente'}s`}
+        placeholder={`Buscar ${entity === 'product' ? 'produto' : entity === 'user' ? 'cliente' : 'pedido'}s ${entity === 'order' ? 'por nome do cliente' : ''}`}
+        entity={entity}
         dataToFilter={receivedData}
         hasNotFound={setNotFound}
         onFiltered={setFilteredReceivedData}
       />
 
-      <Status title={`Nenhum ${entity === 'product' ? 'produto' : 'cliente'} encontrado`} show={notFound} />
+      <Status title={`Nenhum ${entity === 'product' ? 'produto' : entity === 'user' ? 'cliente' : 'pedido'} encontrado`} show={notFound} />
 
       <Status title="Carregando..." show={loading} />
 
@@ -74,34 +89,33 @@ const CardsGrid = ({
           entity === 'product' ?
             <Product
               key={item.id}
-              id={item.id}
-              image={item.images[0]}
-              name={item.name}
-              sale_price={item.sale_price}
-              cost_price={item.cost_price}
-              stock={item.stock}
-              className={selectable && selectedItems.includes(item.id) ? 'selected' : ''}
-              onClick={() => handleSelectItem(item.id)}
+              data={item}
+              selected={selectable && selectedProducts.includes(item.id) && true}
+              onClick={() => handleSelectProduct(item.id)}
             />
-          :
+          : entity === 'user' ?
             <User
               key={item.id}
-              id={item.id}
-              name={item.name}
-              street={item.address.street}
-              number={item.address.number}
-              neighborhood={item.address.neighborhood}
-              zipcode={item.address.zipcode}
-              city={item.address.city}
-              state={item.address.state}
-              phone={item.phone}
-              onClick={() => handleSelectItem(item.id)}
+              data={item}
+              buttons={buttons}
+              selected={selectable && selectedUser === item.id && true}
+              onClick={() => handleSelectUser(item.id)}
               onDelete={(id) => {
                   setFilteredReceivedData(filteredReceivedData.filter(item => item.id !== id))
                   setReceivedData(filteredReceivedData.filter(item => item.id !== id))
                 }
               }
             />
+          :
+          <Order
+            key={item.id}
+            data={item}
+            onDelete={(id) => {
+                setFilteredReceivedData(filteredReceivedData.filter(item => item.id !== id))
+                setReceivedData(filteredReceivedData.filter(item => item.id !== id))
+              }
+            }
+          />
         ))}
       </Grid>
     </>
