@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useHistory, Redirect, Link } from 'react-router-dom'
+
+import * as ROUTES from '../../constants/routes'
 
 import api from '../../services/api'
 
@@ -17,6 +20,8 @@ const User = ({
   onUpdate = () => {},
   onClick = () => {}
 }) => {
+  // const history = useHistory()
+
   const handleUpdateUser = async (id) => {
     alert('Funcionalidade indisponível.')
   }

@@ -10,7 +10,6 @@ import {
 } from './styles'
 
 const Order = ({
-  id,
   data,
   onDelete = () => {},
   onUpdate = () => {},
