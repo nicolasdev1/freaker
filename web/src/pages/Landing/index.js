@@ -2,7 +2,14 @@ import React from 'react'
 
 import * as ROUTES from '../../constants/routes'
 
-import { Wrapper, Container, Header, Main, Enter } from './styles'
+import Button from '../../components/Button'
+
+import {
+  Wrapper,
+  Container,
+  Header,
+  Main
+} from './styles'
 
 const Landing = () => {
   return (
@@ -16,13 +23,11 @@ const Landing = () => {
         <h1>Pronto para gerenciar seu restaurante?</h1>
         <p>Prestamos serviço para pessoas que buscam levar o seu restaurante para a internet.</p>
 
-        <Enter to={ROUTES.ORDERS}>
-          <span>
-            <img src="/images/icons/enter.svg" alt="Entrar"/>
-          </span>
-
-          <strong>Quero gerenciar meu negócio</strong>
-        </Enter>
+        <Button
+          to={ROUTES.ORDERS}
+          icon="/images/icons/enter.svg"
+          title="Quero gerenciar meu negócio"
+        />
       </Main>
     </Container>
     </Wrapper>

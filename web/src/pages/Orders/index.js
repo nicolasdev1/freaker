@@ -1,28 +1,48 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import Container from '../../components/Container'
 import Header from '../../components/Header'
 import Profile from '../../components/Profile'
 import NavBar from '../../components/NavBar'
 import Footer from '../../components/Footer'
-import CardProducts from '../../components/CardProducts'
+import CardsGrid from '../../components/CardsGrid'
 import Title from '../../components/Title'
+import Button from '../../components/Button'
 
-import {
-  Form,
-  Products,
-  CardItem,
-  Price,
-  Enter,
-} from './styles'
+import api from '../../services/api'
+
+import { Form } from './styles'
 
 const Orders = () => {
-  const [products, setProducts] = useState([])
+  const [selectedUser, setSelectedUser] = useState()
+  const [selectedProducts, setSelectedProducts] = useState([])
 
-  console.log(products)
+  const history = useHistory()
 
-  function handleCreateOrder(event) {
-    event.preventDefault()
+  const handleCreateOrder = async () => {
+    try {
+      const data = {
+        user_id: selectedUser,
+        products: selectedProducts
+      }
+
+      await api.post('/orders', data)
+
+      alert('Pedido efetuado com sucesso.')
+    } catch (error) {
+      console.log(error)
+
+      alert('Ocorreu um erro ao criar o produto.')
+    }
+
+    setSelectedProducts([])
+    setSelectedUser()
+
+    history.go()
+
+    console.log(selectedUser)
+    console.log(selectedProducts)
   }
 
   return (
@@ -34,15 +54,27 @@ const Orders = () => {
       <Form onSubmit={handleCreateOrder}>
         <Title text="Efetuar um pedido" />
 
-        <CardProducts items={setProducts} />
+        <h3 style={{ marginTop: 20 }}>Selecione um cliente para o seu pedido</h3>
 
-        <Enter type="submit">
-          <span>
-            <img src="/images/icons/enter.svg" alt="Entrar" />
-          </span>
+        <CardsGrid
+          entity="user"
+          gridColumns="repeat(3, 1fr)"
+          listOfSelectedItems={setSelectedUser}
+        />
 
-          <strong>Finalizar pedido</strong>
-        </Enter>
+        <h3>Selecione um ou mais produtos para o seu pedido</h3>
+
+        <CardsGrid
+          entity="product"
+          gridColumns="repeat(4, 1fr)"
+          listOfSelectedItems={setSelectedProducts}
+        />
+
+        <Button
+          onClick={handleCreateOrder}
+          icon="/images/icons/cart.svg"
+          title="Finalizar pedido"
+        />
       </Form>
       <Footer />
     </Container>

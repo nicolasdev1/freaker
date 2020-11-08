@@ -1,40 +1,31 @@
 import styled from 'styled-components'
 
-export const Products = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 50px;
-  margin-top: 40px;
+export const Wrapper = styled.div`
+  border: ${({ className }) => className === 'selected' ? '3px solid #e04e5b' : '3px solid transparent'};
+  border-radius: 11px;
+
+  user-select: none;
 `
 
-export const CardItem = styled.div`
-  .selected {
-    background: #2e2e2e;
-    border: 4px solid #e04e5b;
-  }
-
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
   border-radius: 8px;
-  border: 1px solid #dcdcdc;
+
+  border: ${({ className }) => className === 'selected' ? '0px solid transparent' : '1px solid #d3d3d3'};;
 
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 
-  height: 250px;
+  height: 300px;
   padding-bottom: 8px;
 
   img {
-    background: #ffffff;
     text-decoration: none;
     transition: 200ms;
     overflow: hidden;
-
-    border-radius: 8px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
 
     cursor: pointer;
 
@@ -43,10 +34,10 @@ export const CardItem = styled.div`
     margin: 0 auto;
     object-fit: cover;
 
-    max-width:300px;
-    max-height:147px;
-    min-height:147px;
-    min-width:300px;
+    max-width: 100%;
+    max-height: 147px;
+    min-height: 147px;
+    min-width: 300px;
     width: 100%;
     height: auto;
   }

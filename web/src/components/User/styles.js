@@ -10,11 +10,7 @@ export const Container = styled.div`
   border: 1px solid #d3d3d3;
   border-radius: 8px;
 
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
-
   transition: background-color .2s;
-
-  user-select: none;
 `
 
 export const InfoContainer = styled.div`

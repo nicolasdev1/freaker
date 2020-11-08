@@ -6,7 +6,7 @@ import Header from '../../components/Header'
 import Profile from '../../components/Profile'
 import NavBar from '../../components/NavBar'
 import Footer from '../../components/Footer'
-import CardProducts from '../../components/CardProducts'
+import CardsGrid from '../../components/CardsGrid'
 import Title from '../../components/Title'
 import Line from '../../components/Line'
 
@@ -64,8 +64,11 @@ const Products = () => {
         <Listing>
           <Title text="Lista de produtos" />
 
-
-          <CardProducts />
+          <CardsGrid
+            entity="product"
+            gridRepeat={4}
+            selectable={false}
+          />
         </Listing>
         <Line />
 

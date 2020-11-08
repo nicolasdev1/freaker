@@ -19,7 +19,8 @@ const User = ({
   state,
   phone,
   onDelete = () => {},
-  onUpdate = () => {}
+  onUpdate = () => {},
+  onClick = () => {}
 }) => {
   const handleUpdateUser = async (id) => {
     alert('Funcionalidade indisponível.')
@@ -44,7 +45,7 @@ const User = ({
   }, [])
 
   return (
-    <Container>
+    <Container onClick={onClick}>
       <InfoContainer>
         <span>
           <img src="/images/icons/user.svg" alt="Avatar do cliente" />
