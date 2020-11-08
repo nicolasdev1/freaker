@@ -36,9 +36,6 @@ const Orders = () => {
       alert('Ocorreu um erro ao criar o produto.')
     }
 
-    setSelectedProducts([])
-    setSelectedUser()
-
     history.go()
 
     console.log(selectedUser)

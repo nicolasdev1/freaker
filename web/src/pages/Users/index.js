@@ -9,6 +9,7 @@ import User from '../../components/User'
 import Search from '../../components/Search'
 import Line from '../../components/Line'
 import Footer from '../../components/Footer'
+import Button from '../../components/Button'
 
 import api from '../../services/api'
 
@@ -133,13 +134,10 @@ const Users = () => {
           </Wrapper>
 
           <ButtonContainer>
-            <Enter type="submit">
-              <span>
-                <img src="/images/icons/enter.svg" alt="Entrar" />
-              </span>
-
-              <strong>Cadastrar produto</strong>
-            </Enter>
+            <Button
+              icon="/images/icons/enter.svg"
+              title="Cadastrar cliente"
+            />
           </ButtonContainer>
 
         </Form>

@@ -9,6 +9,7 @@ import Footer from '../../components/Footer'
 import CardsGrid from '../../components/CardsGrid'
 import Title from '../../components/Title'
 import Line from '../../components/Line'
+import Button from '../../components/Button'
 
 import api from '../../services/api'
 
@@ -30,7 +31,7 @@ const Products = () => {
 
   const history = useHistory()
 
-  async function handleSubmit(event) {
+  async function handleCreateProduct(event) {
     event.preventDefault()
 
     try {
@@ -47,11 +48,12 @@ const Products = () => {
       await api.post('/products', data)
 
       alert('Produto cadastrado com sucesso.')
-      history.go()
     } catch (err) {
       console.log(err)
       alert('Erro no cadastro!')
     }
+
+    history.go()
   }
 
   return (
@@ -72,7 +74,7 @@ const Products = () => {
         </Listing>
         <Line />
 
-        <Form onSubmit={handleSubmit}>
+        <Form>
           <h1>Criar um novo produto</h1>
           <p>Forneça os dados necessários para criar um produto</p>
 
@@ -124,13 +126,11 @@ const Products = () => {
           </Wrapper>
 
           <ButtonContainer>
-            <Enter type="submit">
-              <span>
-                <img src="/images/icons/enter.svg" alt="Entrar" />
-              </span>
-
-              <strong>Cadastrar produto</strong>
-            </Enter>
+            <Button
+              icon="/images/icons/enter.svg"
+              title="Cadastrar produto"
+              onClick={handleCreateProduct}
+            />
           </ButtonContainer>
 
         </Form>
