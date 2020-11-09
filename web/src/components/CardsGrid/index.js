@@ -108,6 +108,7 @@ const CardsGrid = ({
             />
           :
           <Order
+            buttons={buttons}
             key={item.id}
             data={item}
             onDelete={(id) => {

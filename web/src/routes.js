@@ -24,7 +24,7 @@ const Routes = () => {
 
         <Route exact path={ROUTES.USERS} component={Users} />
 
-        {/* <Route exact path="dashboard/users/edit/:id" component={EditUser} /> */}
+        <Route exact path="/users/edit/:id" component={EditUser} />
       </Switch>
     </BrowserRouter >
   )

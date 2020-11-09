@@ -49,6 +49,7 @@ const Orders = () => {
       <Title text="Lista de pedidos" />
 
       <CardsGrid
+        buttons={false}
         entity="order"
         gridColumns="repeat(2, 1fr)"
       />
