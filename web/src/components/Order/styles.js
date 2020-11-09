@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
 
   width: 100%;
-  height: 300px;
+  height: ${({ buttons }) => buttons ? '300px' : '100%'};
 
   border: 1px solid #d3d3d3;
   border-radius: 8px;

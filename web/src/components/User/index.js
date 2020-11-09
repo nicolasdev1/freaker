@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useHistory, Redirect, Link } from 'react-router-dom'
-
-import * as ROUTES from '../../constants/routes'
+import React from 'react'
+import { useHistory, Link } from 'react-router-dom'
 
 import api from '../../services/api'
 
@@ -20,7 +18,12 @@ const User = ({
   onUpdate = () => {},
   onClick = () => {}
 }) => {
-  // const history = useHistory()
+  const history = useHistory()
+
+  const handleNavigation = () => {
+    let path = `/users/edit/${data.id}`
+    history.push(path)
+  }
 
   const handleUpdateUser = async (id) => {
     alert('Funcionalidade indisponível.')
@@ -61,9 +64,11 @@ const User = ({
         {
         buttons &&
           <ButtonsContainer>
-            <button type="button" onClick={() => handleUpdateUser(data.id)}>
-              Editar
-            </button>
+
+              <button onClick={handleNavigation}>
+                Editar
+              </button>
+
 
             <button type="button" onClick={() => handleDeleteUser(data.id)}>
               Excluir

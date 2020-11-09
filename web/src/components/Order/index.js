@@ -1,7 +1,6 @@
 import React from 'react'
 
 import api from '../../services/api'
-import Product from '../Product'
 
 import {
   Container,
@@ -11,13 +10,16 @@ import {
 
 const Order = ({
   data,
+  buttons,
   onDelete = () => {},
   onUpdate = () => {},
   onClick = () => {}
 }) => {
+
   const handleUpdateOrder = async (id) => {
-    alert('Funcionalidade indisponível.')
+    alert('Funcionalidade indisponível!')
   }
+
 
   const handleDeleteOrder = async (id) => {
     const confirm = window.confirm('Tem certeza que deseja remover o pedido?')
@@ -34,7 +36,7 @@ const Order = ({
   }
 
   return (
-    <Container onClick={onClick}>
+    <Container buttons={buttons} onClick={onClick}>
       <InfoContainer>
         <span>Pedido <strong>#{data.id}</strong></span>
 
@@ -70,15 +72,17 @@ const Order = ({
         </div>
       </InfoContainer>
 
-      <ButtonsContainer>
-        <button onClick={() => handleUpdateOrder(data.id)}>
-          Editar
-        </button>
+     {buttons && (
+        <ButtonsContainer>
+          <button onClick={handleUpdateOrder}>
+            Editar
+          </button>
 
-        <button onClick={() => handleDeleteOrder(data.id)}>
-          Excluir
-        </button>
-      </ButtonsContainer>
+          <button onClick={() => handleDeleteOrder(data.id)}>
+            Excluir
+          </button>
+        </ButtonsContainer>
+     )}
     </Container>
   )
 }
