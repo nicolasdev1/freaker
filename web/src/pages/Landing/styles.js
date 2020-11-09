@@ -6,7 +6,11 @@ export const Wrapper = styled.div`
 
   max-width: 1750px;
 
-  background: url('/images/landing.svg') no-repeat 950px 60%;
+  background: url('/images/landing.svg') no-repeat 90% 60%;
+
+  @media screen and (max-width: 1400px) {
+    background: none;
+  }
 `
 
 export const Container = styled.div`
@@ -20,6 +24,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  @media screen and (max-width: 1400px) {
+    align-items: center;
+  }
 `
 
 export const Header = styled.div`
@@ -27,6 +35,18 @@ export const Header = styled.div`
 
   > img {
     width: 202px;
+  }
+
+  @media screen and (max-width: 1400px) {
+    > img {
+      width: 302px;
+    }
+  }
+
+  @media screen and (max-width: 1100px) {
+    > img {
+      width: 202px;
+    }
   }
 `
 
@@ -39,6 +59,11 @@ export const Main = styled.main`
   justify-content: center;
 
   margin-top: 8px;
+
+  @media screen and (max-width: 1400px) {
+    align-items: center;
+    max-width: unset;
+  }
 
   > h1 {
     font-size: 54px;
